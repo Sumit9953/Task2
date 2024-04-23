@@ -89,7 +89,7 @@ function reloadCard(){
                 <div>
                     <button onclick="changeQuantity(${key}, ${value.quantity - 1})">-</button>
                     <div class="count">${value.quantity}</div>
-                    <button onclick="changeQuantity(${key}, ${value.quantity + 1})">+</button>
+                    <button onclick="changeQuantity(${key}, ${count <= 8 ? value.quantity + 1 : count})">+</button>
                 </div>`;
                 listCard.appendChild(newDiv);
         }
