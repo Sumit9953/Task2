@@ -89,21 +89,26 @@ function reloadCard(){
                 <div>
                     <button onclick="changeQuantity(${key}, ${value.quantity - 1})">-</button>
                     <div class="count">${value.quantity}</div>
-                    <button onclick="changeQuantity(${key}, ${count <= 8 ? value.quantity + 1 : count})">+</button>
+                    <button onclick="changeQuantity(${key}, ${count < 8 ? value.quantity + 1 : null})">+</button>
                 </div>`;
-                listCard.appendChild(newDiv);
+               
+                 listCard.appendChild(newDiv);
         }
     })
     total.innerText = totalPrice.toLocaleString();
     if(count <= 8)
-     quantity.innerText = count;
+    quantity.innerText = count;
     
 }
 
 function changeQuantity(key, quantity){
+    if(quantity === null){
+        return null;
+    }
     if(quantity == 0){
         delete listCards[key];
-    }else{
+    }
+    else{
       if(quantity <= 8)
         listCards[key].quantity = quantity;
         listCards[key].price = quantity * products[key].price;
